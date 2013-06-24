@@ -1,0 +1,12 @@
+{
+  "family": "seajs",
+  "name": "seajs-heath",
+  "version": "0.1.0",
+  "description": "A Sea.js plugin for collecting health data of CMD modules",
+  "keywords": ["seajs", "plugin", "health"],
+  "author": "Frank Wang <lifesinger@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/seajs/seajs-health.git"
+  }
+}
