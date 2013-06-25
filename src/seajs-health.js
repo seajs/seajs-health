@@ -12,7 +12,7 @@
 
 
   var cachedMods = seajs.cache
-  var VERSION_RE = /\/(?:\d+\.){1,2}\d+\/|\D(?:\d+\.){1,2}\d+[^/]*(?=\.js|\.css)/
+  var VERSION_RE = /(\/)(?:\d+\.){1,2}\d+(\/)|(\D)(?:\d+\.){1,2}\d+[^/]*(\.(?:js|css))/
 
   // Only support version styles bellow:
   // `zz/1.2.3/xx`
@@ -23,14 +23,16 @@
     var ret = {}
 
     for (var uri in cachedMods) {
-      if (!VERSION_RE.test(uri)) return
+      var m = uri.match(VERSION_RE)
+      if (!m) continue
 
-      var key = uri.replace(VERSION_RE, "{version}")
+      var key = uri.replace(VERSION_RE,
+          (m[1] || m[3]) + "{version}" + (m[2] || m[4]))
+
       var arr = hash[key] || (hash[key] = [])
 
       if (indexOf(arr, uri) === -1) {
         arr.push(uri)
-
         if (arr.length > 1) {
           ret[key] = arr
         }
@@ -42,7 +44,7 @@
 
 
   function getCircles() {
-    return "NOT available now"
+    return "NOT Available"
   }
 
 
