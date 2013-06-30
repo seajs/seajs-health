@@ -1,6 +1,6 @@
 {
   "family": "seajs",
-  "name": "seajs-heath",
+  "name": "seajs-health",
   "version": "0.1.0",
   "description": "A Sea.js plugin for collecting health data of CMD modules",
   "keywords": ["seajs", "plugin", "health"],
