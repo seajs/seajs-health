@@ -205,21 +205,35 @@
   var graph = new Graph()
 
   function getCircles() {
-    var roots = []
+    var roots = findRoots()
 
-    for (var key in cachedMods) {
-      if (isRoot(key)) {
-        var mod = cachedMods[key]
-        var node = graph.add(key)
-        addDep(node, mod)
-      }
-    }
+    forEach(roots, function(rootId) {
+      var mod = seajs.cache[rootId]
+      var node = graph.add(rootId)
+
+      addDep(node, mod)
+    })
 
     return {
         circles: graph.getCircleNodes(),
         nodes: graph.nodes
     }
   }
+
+
+  function findRoots() {
+    var roots = []
+    for (var key in seajs.cache) {
+      if (isRoot(key)) {
+        roots.push(key)
+      }
+    }
+
+    // pop plugin use
+    roots.pop()
+    return roots
+  }
+
 
   // Helpers
 

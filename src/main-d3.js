@@ -270,7 +270,9 @@
 
       d3Node = getD3Node(node)
 
-      d3Nodes.push(d3Node)
+      if (node.depth) {
+        d3Nodes.push(d3Node)
+      }
 
       // for each node with outEdges do
       while(node.outEdges.length) {
@@ -279,7 +281,9 @@
         var e = node.outEdges.shift()
         var m = e.to
 
-        d3Links.push(getD3Link(d3Node, getD3Node(m)))
+        if (node.depth) {
+          d3Links.push(getD3Link(d3Node, getD3Node(m)))
+        }
 
         // remove edge form m
         e.remove()
