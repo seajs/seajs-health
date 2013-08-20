@@ -78,7 +78,9 @@
       // S <- Array of all nodes with no incoming edges
       var S = []
 
-      forEach(this.nodes, function(node) {
+      var nodes = this.clone().nodes
+
+      forEach(nodes, function(node) {
         if (node.inEdges.length == 0) {
           S.push(node)
         }
@@ -111,7 +113,7 @@
       }
 
       // Check to see if all edges are removed
-      return this.nodes.filter(function(node) {
+      return nodes.filter(function(node) {
         return node.inEdges.length != 0
       })
     },
