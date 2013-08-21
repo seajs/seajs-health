@@ -1,8 +1,8 @@
 define(function(require, exports) {
 
   // set up SVG for D3
-  var width  = 1024,
-      height = 700,
+  var width  = 800,
+      height = 500,
       colors = d3.scale.category10();
 
   var svg = d3.select('#seajs-health-console')
