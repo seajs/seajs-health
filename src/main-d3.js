@@ -248,7 +248,6 @@
   var d3App = appDomain + 'src/d3-app.js'
   var d3Css = appDomain + 'src/d3.css'
 
-  // TODO override old comboExcludes ?
   var data = seajs.data
   var comboExcludes = /d3/
 
