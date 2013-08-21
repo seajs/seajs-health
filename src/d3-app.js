@@ -1,7 +1,7 @@
 define(function(require, exports) {
 
   // set up SVG for D3
-  var width  = 800,
+  var width  = 1280,
       height = 500,
       colors = d3.scale.category10();
 
