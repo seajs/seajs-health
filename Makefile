@@ -1,13 +1,15 @@
 
 build:
-	@rm -rf dist
-	@mkdir dist
-	@sed "s/seajs-health/seajs-health-debug/" src/seajs-health.js >dist/seajs-health-debug.js
-	@uglifyjs src/seajs-health.js -o dist/seajs-health.js -mc
-	@make size
+	@seatools build
 
 test:
-	@make test -C ../seajs
+	@seatools site
+	@seatools test --local
+	@seatools test --http
+
+totoro:
+	@seatools site
+	@seatools test --totoro
 
 size:
-	@../seajs/tools/size.sh seajs-health
+	@seatools size
