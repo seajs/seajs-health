@@ -8,5 +8,11 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/seajs/seajs-health.git"
+  },
+  "devDependencies": {
+    "seatools": "*"
+  },
+  "spm": {
+    "output": ["seajs-health.js"]
   }
 }

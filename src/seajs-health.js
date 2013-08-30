@@ -1,7 +1,7 @@
 /**
  * A Sea.js plugin for collecting health data of CMD modules
  */
-(function(seajs) {
+define(function() {
 
   seajs.health = function() {
     return {
@@ -245,9 +245,4 @@
         return -1
       }
 
-
-  // Register as module
-  define("seajs-health", [], {})
-
-})(seajs);
-
+});
