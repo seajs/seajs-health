@@ -4,7 +4,7 @@ seajs-health
 A Sea.js plugin for collecting health data of CMD modules
 
 
-> To use seajs-health@0.1.1+,  please use seajs@2.2.0+ !
+> seajs-health@0.1.1+ is compatible with seajs@2.2.0+ !
 
 
 
