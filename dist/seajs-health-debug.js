@@ -1,7 +1,7 @@
 /**
  * A Sea.js plugin for collecting health data of CMD modules
  */
-define("seajs/seajs-health/0.1.0/seajs-health-debug", [], function() {
+define("seajs/seajs-health/0.1.1/seajs-health-debug", [], function() {
     seajs.health = function() {
         return {
             multiVersions: getMultiVersions(),
@@ -192,4 +192,4 @@ define("seajs/seajs-health/0.1.0/seajs-health-debug", [], function() {
     };
 });
 
-seajs.use("seajs/seajs-health/0.1.0/seajs-health-debug");
+seajs.require("seajs/seajs-health/0.1.1/seajs-health-debug");
