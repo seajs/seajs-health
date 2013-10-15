@@ -111,7 +111,7 @@ define(function() {
       }
 
       // Check to see if all edges are removed
-      return this.nodes.filter(function(node) {
+      return filter(this.nodes, function(node) {
         return node.inEdges.length != 0
       })
     },
@@ -119,9 +119,9 @@ define(function() {
     clone: function() {
       var g = new Graph()
 
-      this.nodes.forEach(function(node) {
+      forEach(this.nodes, function(node) {
         var n = g.add(node.name, node.data)
-        node.outEdges.forEach(function(e) {
+        forEach(node.outEdges, function(e) {
           var to = e.to
           n.addEdge(g.add(to.name, to.data))
         })
@@ -181,7 +181,7 @@ define(function() {
 
 
   function remove(arr, item) {
-    arr.splice(arr.indexOf(item), 1)
+    arr.splice(indexOf(arr, item), 1)
   }
 
   function printCycleNode(nodes) {
@@ -229,6 +229,14 @@ define(function() {
     for (var i = 0, len = arrs.length; i < len; i++) {
       cb(arrs[i], i)
     }
+  }
+
+  function filter(arrs, iterator) {
+    var results = []
+    forEach(arrs, function(value) {
+      if (iterator.call(null, value)) results.push(value);
+    })
+    return results
   }
 
 
