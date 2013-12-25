@@ -107,6 +107,11 @@ Graph.prototype = {
           S.push(m)
         }
       }
+
+      // Check to see if all edges are removed
+      return filter(this.nodes, function(node) {
+        return node.inEdges.length != 0
+      })
     }
 
     // Check to see if all edges are removed
@@ -180,7 +185,7 @@ Edge.prototype = {
 
 
 function remove(arr, item) {
-  arr.splice(arr.indexOf(item), 1)
+  arr.splice(indexOf(arr, item), 1)
 }
 
 function printCycleNode(nodes) {
@@ -228,6 +233,14 @@ function forEach(arrs, cb) {
   for (var i = 0, len = arrs.length; i < len; i++) {
     cb(arrs[i], i)
   }
+}
+
+function filter(arrs, iterator) {
+  var results = []
+  forEach(arrs, function(value) {
+    if (iterator.call(null, value)) results.push(value);
+  })
+  return results
 }
 
 

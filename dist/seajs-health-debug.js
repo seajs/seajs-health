@@ -108,6 +108,11 @@ Graph.prototype = {
           S.push(m)
         }
       }
+
+      // Check to see if all edges are removed
+      return filter(this.nodes, function(node) {
+        return node.inEdges.length != 0
+      })
     }
 
     // Check to see if all edges are removed
@@ -181,7 +186,7 @@ Edge.prototype = {
 
 
 function remove(arr, item) {
-  arr.splice(arr.indexOf(item), 1)
+  arr.splice(indexOf(arr, item), 1)
 }
 
 function printCycleNode(nodes) {
@@ -231,6 +236,14 @@ function forEach(arrs, cb) {
   }
 }
 
+function filter(arrs, iterator) {
+  var results = []
+  forEach(arrs, function(value) {
+    if (iterator.call(null, value)) results.push(value);
+  })
+  return results
+}
+
 
 var indexOf = [].indexOf ?
   function(arr, item) {
@@ -245,5 +258,5 @@ var indexOf = [].indexOf ?
     return -1
   }
 
-define("seajs/seajs-health/0.1.0/seajs-health-debug", [], {});
+define("seajs/seajs-health/0.1.1/seajs-health-debug", [], {});
 })();
