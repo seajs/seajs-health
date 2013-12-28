@@ -15,14 +15,14 @@ if (typeof require === 'function') {
   console._log = console.log || noop
   console._warn = console.warn || noop
 
-  console.log = function(msg) {
-    stack.push(msg)
-    console._log(msg)
+  console.log = function() {
+    stack.push(arguments)
+    console._log.apply(console, arguments)
   }
 
-  console.warn = function(msg) {
-    stack.push(msg)
-    console._warn(msg)
+  console.warn = function() {
+    stack.push(arguments)
+    console._warn.apply(console, arguments)
   }
 
   function noop() {}
@@ -71,7 +71,10 @@ if (typeof document !== 'undefined') {
   var queue = []
   var time
 
-  isNode || require.async && require.async('./style.css')
+  var link = document.createElement('link')
+  link.href = '/tests/style.css'
+  link.rel = "stylesheet"
+  isNode || document.head.appendChild(link)
   handleGlobalError()
 
 
@@ -126,7 +129,7 @@ if (typeof document !== 'undefined') {
   var defaultConfig = copy(data, {})
 
   function reset(id) {
-    global.consoleMsgStack.length = 0
+    global.consoleMsgStack = []
     seajs.off()
 
     // Restore default configurations
@@ -280,4 +283,3 @@ if (typeof document !== 'undefined') {
   }
 
 })
-
